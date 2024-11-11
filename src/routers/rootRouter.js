@@ -1,6 +1,8 @@
 import express from "express";
 import videoRouter from "./videoRouter.js";
 import authRouter from "./authRouter.js";
+import roleRouter from "./roleRouter.js";
+import permissionRouter from "./permissionRouter.js";
 
 const rootRouter = express.Router();
 
@@ -33,5 +35,9 @@ rootRouter.get(
 rootRouter.use("/video", videoRouter);
 
 rootRouter.use("/auth", authRouter);
+
+rootRouter.use("/role", roleRouter);
+
+rootRouter.use("/permission", permissionRouter);
 
 export default rootRouter;

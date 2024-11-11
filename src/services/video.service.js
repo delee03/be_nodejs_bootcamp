@@ -33,8 +33,8 @@ const videoService = {
             page,
             pageSize,
             totalPages: totalPages,
-            totalItems: totalItems || [],
-            items: results,
+            totalItems: totalItems,
+            items: results || [],
         };
     },
     videoType: async (req, res, next) => {
@@ -61,11 +61,11 @@ const videoService = {
         });
 
         return {
-            totalPages,
-            page: page,
-            totalItems,
-            pageSize: pageSize,
-            items: results,
+            page,
+            pageSize,
+            totalPages: totalPages,
+            totalItems: totalItems,
+            items: results || [],
         };
 
         // const result = await typeVideoModel.findAll();
