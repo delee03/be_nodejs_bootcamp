@@ -18,7 +18,11 @@ model users {
   face_app_id String?   @db.VarChar(255)
   created_at  DateTime? @default(now()) @db.Timestamp(0)
   updated_at  DateTime? @default(now()) @db.Timestamp(0)
+  role_id     Int       @default(2)
+  roles       roles     @relation(fields: [role_id], references: [role_id], onDelete: NoAction, onUpdate: NoAction, map: "users_ibfk_1")
   videos      videos[]
+
+  @@index([role_id], map: "role_id")
 }
 
 model video_type {
@@ -81,4 +85,5 @@ model roles {
   created_at       DateTime?          @default(now()) @db.Timestamp(0)
   updated_at       DateTime?          @default(now()) @db.Timestamp(0)
   role_permissions role_permissions[]
+  users            users[]
 }

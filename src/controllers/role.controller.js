@@ -71,4 +71,17 @@ export const roleController = {
             next(err);
         }
     },
+    togglePermission: async function (req, res, next) {
+        try {
+            const result = await roleService.togglePermission(req);
+            const response = handleSuccessResponse(
+                `Toggle thành công`,
+                undefined,
+                result
+            );
+            res.status(response.code).json(response);
+        } catch (err) {
+            next(err);
+        }
+    },
 };

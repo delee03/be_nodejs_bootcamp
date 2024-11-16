@@ -6,7 +6,7 @@ export const permissionController = {
         try {
             const result = await permissionService.create(req);
             const response = handleSuccessResponse(
-                "lấy permission thành công",
+                "Tạo mới permission thành công",
                 undefined,
                 result
             );
@@ -63,6 +63,19 @@ export const permissionController = {
             const result = await permissionService.remove(req);
             const response = handleSuccessResponse(
                 "lấy permission thành công",
+                undefined,
+                result
+            );
+            res.status(response.code).json(response);
+        } catch (err) {
+            next(err);
+        }
+    },
+    groupByModule: async function (req, res, next) {
+        try {
+            const result = await permissionService.groupByModule(req);
+            const response = handleSuccessResponse(
+                "Group By Module thành công",
                 undefined,
                 result
             );
