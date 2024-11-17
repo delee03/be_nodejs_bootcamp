@@ -3,8 +3,13 @@ import videoRouter from "./videoRouter.js";
 import authRouter from "./authRouter.js";
 import roleRouter from "./roleRouter.js";
 import permissionRouter from "./permissionRouter.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../common/swagger/document.swagger.js";
 
 const rootRouter = express.Router();
+
+rootRouter.use("/api-docs", swaggerUi.serve);
+rootRouter.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 //middleware =>
 //xử lí cả dữ liệu trước khi gửi đến và gửi về

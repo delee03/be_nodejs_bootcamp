@@ -68,12 +68,13 @@ export const roleService = {
         if (permissionExist) {
             await prisma.role_permissions.update({
                 where: {
-                    permission_id: +permissionExist.permission_id,
+                    role_permissions_id: permissionExist.role_permissions_id,
                 },
                 data: {
                     is_active: !permissionExist.is_active,
                 },
             });
+            return "ok";
         } else {
             await prisma.role_permissions.create({
                 data: {
@@ -81,6 +82,7 @@ export const roleService = {
                     permission_id: +permission_id,
                 },
             });
+            return "ok";
         }
     },
 };

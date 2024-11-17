@@ -38,6 +38,7 @@ const authService = {
                     full_name: full_name,
                 },
             });
+            newUser.pass_word = "12345";
             return newUser;
         }
     },
