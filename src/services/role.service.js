@@ -80,6 +80,7 @@ export const roleService = {
                 data: {
                     role_id: +role_id,
                     permission_id: +permission_id,
+                    is_active: true,
                 },
             });
             return "ok";

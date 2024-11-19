@@ -5,6 +5,8 @@ import roleRouter from "./roleRouter.js";
 import permissionRouter from "./permissionRouter.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../common/swagger/document.swagger.js";
+import root from "../common/graphql/root.graphql.js";
+import userRouter from "./userRouter.js";
 
 const rootRouter = express.Router();
 
@@ -42,6 +44,8 @@ rootRouter.use("/video", videoRouter);
 rootRouter.use("/auth", authRouter);
 
 rootRouter.use("/role", roleRouter);
+
+rootRouter.use("/user", userRouter);
 
 rootRouter.use("/permission", permissionRouter);
 

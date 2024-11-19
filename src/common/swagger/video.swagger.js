@@ -1,5 +1,5 @@
 const video = {
-    "/video/video-list/{id}": {
+    "/video/video-list": {
         get: {
             security: [
                 {
@@ -20,14 +20,6 @@ const video = {
                 {
                     name: "pageSize",
                     in: "query",
-                },
-                {
-                    name: "x-access-token",
-                    in: "header",
-                },
-                {
-                    name: "id",
-                    in: "path",
                 },
             ],
         },
