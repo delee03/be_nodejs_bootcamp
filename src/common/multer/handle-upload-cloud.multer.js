@@ -1,4 +1,7 @@
+import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
+import pkg from 'cloudinary';
+const { v2: cloudinary } = pkg;
 
 // Configuration
 cloudinary.config({
@@ -12,9 +15,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: "images",
-        format: async (req, file) => "png", // supports promises as well
-        public_id: (req, file) => "computed-filename-using-request",
     },
 });
 
-export const upload = multer({ storage: storage });
+export const uploadCloud = multer({ storage: storage });

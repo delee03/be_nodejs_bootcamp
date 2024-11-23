@@ -12,6 +12,9 @@ const app = express();
 app.use(express.json());
 const PORT = 3069;
 
+app.use(express.static("."));
+//để trỏ đến đúng và hiển thị ảnh từ local folder
+
 console.log(123);
 app.use(
     cors({

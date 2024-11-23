@@ -54,6 +54,20 @@ const authController = {
             next(error);
         }
     },
+    getInfo: async (req, res, next) => {
+        try {
+            const result = await authService.getInfo(req);
+
+            const resData = handleSuccessResponse(
+                "Get info user thành công",
+                200,
+                result
+            );
+            res.status(resData.code).json(resData);
+        } catch (error) {
+            next(error);
+        }
+    },
 };
 
 export default authController;

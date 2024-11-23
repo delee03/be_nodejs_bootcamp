@@ -11,6 +11,7 @@ import {
     ACCESS_TOKEN_SECRET,
     REFRESH_TOKEN_SECRET,
 } from "../common/constant/config.constant.js";
+import { sendMail } from "../common/mail/sendMail.node-mailer.js";
 
 const authService = {
     register: async function (req) {
@@ -38,8 +39,11 @@ const authService = {
                     full_name: full_name,
                 },
             });
-            newUser.pass_word = "12345";
+            console.log(email);
+            // newUser.pass_word = "12345";
+            sendMail(email, "Bạn có khỏe không");
             return newUser;
+
         }
     },
     login: async (req) => {
@@ -151,6 +155,12 @@ const authService = {
         const tokens = tokenService(user_exist);
         return tokens;
     },
+
+    getInfo: async (req) => { 
+        const user = req.user;
+        // console.log(user)
+        return user;
+     }
 };
 
 export default authService;
