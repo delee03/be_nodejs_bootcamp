@@ -7,8 +7,12 @@ import { createHandler } from "graphql-http/lib/use/express";
 import { ruruHTML } from "ruru/server";
 import schema from "./src/common/graphql/schema.graphql.js";
 import root from "./src/common/graphql/root.graphql.js";
+import { createServer } from "node:http";
+import initSocket from "./src/common/socketIO/init.socket.js";
 
 const app = express();
+const server = createServer(app);
+
 app.use(express.json());
 const PORT = 3069;
 
@@ -55,6 +59,8 @@ app.use(errorHandler);
 //phân trang = pagination
 //authentication => register, login, logout
 
-app.listen(PORT, () => {
+initSocket(server);
+
+server.listen(PORT, () => {
     console.log("Dự án đang chạy trên port 3069");
 });

@@ -7,7 +7,40 @@ export const userService = {
     },
 
     findAll: async function (req) {
-        return `This action returns all user`;
+        //pagination
+        let { page, pageSize } = req.query; // param, body, header
+        console.log(page, pageSize);
+
+        // pageSize = Number(pageSize);
+        // pageIndex = Number(pageIndex);
+
+        pageSize = +pageSize > 0 ? +pageSize : 3;
+        page = +page > 0 ? +page : 1;
+
+        const skip = (page - 1) * pageSize;
+        console.log(req.query, skip);
+
+        const totalItems = await prisma.users.count();
+
+        const totalPages = Math.ceil(totalItems / pageSize);
+        const results = await prisma.users.findMany({
+            take: pageSize,
+            skip: skip,
+            orderBy: {
+                created_at: "desc",
+            },
+            // where: {
+            //     NOT:
+            // }
+        });
+
+        return {
+            page,
+            pageSize,
+            totalPages: totalPages,
+            totalItems: totalItems,
+            items: results || [],
+        };
     },
 
     findOne: async function (req) {
@@ -23,46 +56,41 @@ export const userService = {
     },
     uploadAvatar: async (req) => {
         const file = req.file;
-        if(!file){
+        if (!file) {
             throw new BadRequestError("Không có file nào được upload");
         }
         const userId = req.user.user_id;
-         const isImgLocal =  req.user?.avatar.includes("local");
-         if(isImgLocal){
+        const isImgLocal = req.user?.avatar?.includes("local");
+        if (isImgLocal) {
             await prisma.users.update({
                 where: {
                     user_id: userId,
                 },
-                data : {
+                data: {
                     avatar: file.filename,
-                }
-            })
-            console.log(file)
+                },
+            });
+            console.log(file);
             return {
                 folder: "images/",
                 filename: file.filename,
                 imgUrl: `images${file.path}`,
-            }
-         }
-         else {
+            };
+        } else {
             await prisma.users.update({
                 where: {
                     user_id: userId,
                 },
                 data: {
                     avatar: file.path,
-                }
-
-            })
-            console.log(file)
+                },
+            });
+            console.log(file);
             return {
                 folder: "images",
                 filename: file.filename,
                 imgUrl: file.path,
-            }
-         }
-
-       
-       
+            };
+        }
     },
 };

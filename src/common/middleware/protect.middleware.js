@@ -55,6 +55,14 @@ const protect = async (req, res, next) => {
             where: {
                 user_id: verifyToken.user_id,
             },
+            select: {
+                user_id: true,
+                full_name: true,
+                email: true,
+                avatar: true,
+                role_id: true,
+                roles: true,
+            },
         });
 
         if (!user) {

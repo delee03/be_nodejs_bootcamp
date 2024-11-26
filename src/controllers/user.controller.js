@@ -20,7 +20,7 @@ export const userController = {
         try {
             const result = await userService.findAll(req);
             const response = handleSuccessResponse(
-                `Create user successfully`,
+                `Get all users successfully`,
                 undefined,
                 result
             );
