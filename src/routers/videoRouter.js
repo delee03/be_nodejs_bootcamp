@@ -6,9 +6,9 @@ import checkPermission from "../common/middleware/check-permission.middleware.js
 
 const videoRouter = express.Router();
 
-videoRouter.use(protect);
-
-videoRouter.get("/video-list", checkPermission, videoController.videoList);
+// videoRouter.use(protect);
+// lưu ý bỏ checkPermission(sau /video-list)
+videoRouter.get("/video-list", videoController.videoList);
 
 videoRouter.get("/video-type", videoController.videoType);
 

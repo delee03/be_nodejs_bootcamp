@@ -1,6 +1,27 @@
 const video = {
     "/video/video-list": {
         get: {
+            tags: [`Videos`],
+            responses: {
+                200: {
+                    description: `oke`,
+                },
+            },
+            parameters: [
+                {
+                    name: "page",
+                    in: "query",
+                },
+                {
+                    name: "pageSize",
+                    in: "query",
+                },
+            ],
+        },
+    },
+
+    "/video/video-list3": {
+        get: {
             security: [
                 {
                     longToken: [],
