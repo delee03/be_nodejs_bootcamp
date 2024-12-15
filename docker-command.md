@@ -34,3 +34,7 @@ docker compose up -d
 ### Đánh tag trước khi push lên Docker Hub đúng account nào cần đẩy lên
 
 docker tag bc_media fuderrpham/bc_media
+
+### push lên Docker Hub đúng account nào cần đẩy lên - docker login
+
+docker push fuderrpham/bc_media
