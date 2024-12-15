@@ -26,3 +26,11 @@ docker container remove ten_container or id_container
 ### Kiểm tra container đang chạy
 
 docker ps
+
+### Tạo docker compose - có file docker-compose.yml
+
+docker compose up -d
+
+### Đánh tag trước khi push lên Docker Hub đúng account nào cần đẩy lên
+
+docker tag bc_media fuderrpham/bc_media
