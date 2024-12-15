@@ -1,5 +1,5 @@
-#Chọn thư viện NodeJS để chạy dự án trên production internet
-FROM node:alpine
+#Chọn thư viện NodeJS để chạy dự án trên production internet (~5mb)
+FROM node:22.9.0
 
 #thiết lập thư mục trên production để làm việc
 WORKDIR /home/cyber_app
