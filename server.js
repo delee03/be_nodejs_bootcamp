@@ -25,6 +25,7 @@ app.use(
         origin: ["http://localhost:5173", "https://domain.com", "google.com"],
     })
 );
+console.log("abc");
 
 // Create and use the GraphQL handler.
 app.all(
