@@ -26,6 +26,7 @@ app.use(
     })
 );
 console.log("abc");
+console.log("123");
 
 // Create and use the GraphQL handler.
 app.all(
