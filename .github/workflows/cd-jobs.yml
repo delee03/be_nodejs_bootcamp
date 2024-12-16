@@ -1,6 +1,8 @@
 #mô tả tên công việc
 name: CD_DOCKER
+
 #Khi nào chạy
+
 on:
     workflow_run:
         workflows: ["CI_DOCKER"]
@@ -9,7 +11,7 @@ on:
 #Chạy công việc gì
 jobs:
     build:
-        runs-on: bootcampT7CN
+        runs-on: node-bootcamp
 
         steps:
             - name: Xóa file .env cũ
